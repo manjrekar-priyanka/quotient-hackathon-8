@@ -22,16 +22,6 @@ public class UserService {
         userList.remove(user);
     }
 
-    public User getUserByEmail(String email) {
-        for (User user: userList
-             ) {
-            if (user.getEmail().equalsIgnoreCase(email)) {
-                return user;
-            }
-        }
-        return null;
-    }
-
     public User getUserById(Integer userId) {
         for (User user: userList
         ) {
@@ -42,5 +32,22 @@ public class UserService {
         return null;
     }
 
+    public List<User> getAllUsers() {
+        return userList;
+    }
+
+    public User deleteUser(Integer userId) {
+        for (User user: userList
+        ) {
+            if (user.getId() == userId) {
+                boolean isDeleted = userList.remove(user);
+                if(isDeleted) {
+                    return user;
+                }
+                return null;
+            }
+        }
+        return null;
+    }
 
 }

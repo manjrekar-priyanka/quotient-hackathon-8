@@ -7,9 +7,9 @@ public class User {
 
     private  int id;
 
-    private String fNmae;
+    private String firstName;
 
-    private String lName;
+    private String lastName;
 
     private String email;
 }

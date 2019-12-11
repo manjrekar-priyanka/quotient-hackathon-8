@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -22,13 +23,18 @@ public class UserController {
         return userService.addUser(user);
     }
 
-    @GetMapping("/user/{id}")
-    public User getUserById(@PathVariable(value = "id") Integer userId) {
-        return userService.getUserById(userId);
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
     }
 
-    @GetMapping("/user/{email}")
-    public User getUserByEmail(@PathVariable(value = "email") String email) {
-        return userService.getUserByEmail(email);
+    @GetMapping("users/{id}")
+    public User getUserByEmail(@PathVariable(name = "id") Integer id) {
+        return userService.getUserById(id);
+    }
+
+    @DeleteMapping("users/{id}")
+    public User deleteUser(@PathVariable(name = "id") Integer id) {
+        return userService.deleteUser(id);
     }
 }
